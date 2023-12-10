@@ -22,5 +22,5 @@ public class Student {
     private String gender;
     private Date dob;
     private String subject;
-    private String  hobby;
+    private String hobby;
 }

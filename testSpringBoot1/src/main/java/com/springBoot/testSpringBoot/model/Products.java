@@ -7,14 +7,14 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-@Entity(name ="Student")
+@Entity(name ="products")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Student {
+public class Products {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Integer id;
+    private  int id;
     private  int roll;
     private String name;
     @Column(unique = true,nullable = false)
@@ -22,5 +22,5 @@ public class Student {
     private String gender;
     private Date dob;
     private String subject;
-    private String  hobby;
+    private String hobby;
 }

@@ -10,14 +10,10 @@
 <body>
 
 <div class="container">
-<h4>Student Form</h4>
-<h5 th:if="*{id == null}">Save Form</h5>
-<h5 th:if="*{id != null}">Edit Form</h5>
 
 <form method="post" th:action="@{/student/save}" th:object="${student}">
-    <input type="hidden" class="form-label" th:field="*{id}">
 
-
+        <Legend>Registration Form</Legend>
     <div class="mb-3">
         <label class="form-label" for="name" id="name">Name</label><br>
         <input type="text" class="form-input" placeholder="Name" th:field="*{name}">
@@ -28,30 +24,28 @@
         </div>
         <div class="mb-3">
         <label class="form-label" for="gender" id="gender">Gender</label><br>
-        <input type="radio" class="form-input" name="gender" th:field="*{gender}" id="male" value="male"><label for="male">Male</label>
-        <input type="radio" class="form-input" name="gender"  th:field="*{gender}" id="female" value="female"><label for="female">Female</label><br>
+        <input type="radio" class="form-input" name="gender" id="male"><label for="male">Male</label>
+        <input type="radio" class="form-input" name="gender" id="female"><label for="female">Female</label><br>
         </div>
         <div class="mb-3">
-        <label class="form-label" for="subject" id="subject">Subject</label>
-            <input type="text" class="form-input" placeholder="Subject" th:field="*{subject}">
-<!--        <input type="checkbox" class="form-input"><label class="form-label">JEE</label><br>-->
-<!--        <input type="checkbox" class="form-input"><label class="form-label">DDD</label><br>-->
-<!--        <input type="checkbox" class="form-input"><label class="form-label">WDPF</label><br>-->
+        <label class="form-label" for="subject" id="subject">Subject</label><br>
+        <input type="checkbox" class="form-input"><label class="form-label">JEE</label><br>
+        <input type="checkbox" class="form-input"><label class="form-label">DDD</label><br>
+        <input type="checkbox" class="form-input"><label class="form-label">WDPF</label><br>
         </div>
         <div class="mb-3">
-        <label class="form-label"  >Hobby</label>
-<!--            <input type="text" class="form-input" placeholder="Subject" th:field="*{hobby}">-->
-        <select name="hobby" id="hobby" th:field="*{hobby}">
+        <label class="form-label" for="hobby" id="hobby">Hobby</label><br>
+        <select name="hobbyName" id="hobbyName">
             <option value="select">Select a option</option>
-            <option value="Reading">Reading</option>
-            <option value="Eating">Eating</option>
-            <option value="Coding">Coding</option>
+            <option value="MS Office">Reading</option>
+            <option value="MS Office">Eating</option>
+            <option value="MS Office">HTML</option>
+            <option value="MS Office">CSS</option>
 
         </select>
         </div>
         <div class="mb-3">
-            <button th:if="*{id == null}" class="btn btn-primary" type="submit">Submit</button>
-            <button th:if="*{id != null}" class="btn btn-primary" type="submit">Update</button>
+            <button class="btn btn-primary" type="submit">Submit</button>
             <button class="btn btn-warning" type="reset">Reset</button>
 
 
