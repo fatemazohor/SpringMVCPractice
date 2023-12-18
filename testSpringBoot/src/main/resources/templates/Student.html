@@ -28,8 +28,8 @@
         <td th:text="${student.subject}"></td>
         <td th:text="${student.hobby}"></td>
         <td>
-            <a class="btn btn-danger" th:href="@{'/student/delete/'+${id}}">Delete</a>
-            <a class="btn btn-warning" th:href="@{'/student/update/'+${id}}">Update</a>
+            <a class="btn btn-danger" th:href="@{'/student/delete/'+${student.id}}">Delete</a>
+            <a class="btn btn-warning" th:href="@{'/student/update/'+${student.id}}">Update</a>
 
         </td>
     </tr>

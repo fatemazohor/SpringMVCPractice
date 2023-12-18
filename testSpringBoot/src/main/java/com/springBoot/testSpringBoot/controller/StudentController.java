@@ -45,7 +45,7 @@ private StudentService service;
     public String editStudent(@PathVariable int id, Model m){
         Student s=service.findById(id);
         m.addAttribute("student", s);
-        return "redirect:/student/add";
+        return "AddStudent";
     }
 
 }
