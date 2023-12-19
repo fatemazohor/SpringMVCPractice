@@ -21,6 +21,9 @@ public class Student {
     private String email;
     private String gender;
     private Date dob;
-    private String subject;
+//    private String subject;
     private String  hobby;
+    @ManyToOne
+    @JoinColumn(name = "sub_id")
+    Subjects subId;
 }

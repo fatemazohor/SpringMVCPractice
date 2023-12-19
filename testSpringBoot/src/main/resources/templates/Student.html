@@ -15,6 +15,7 @@
         <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Email</th>
+        <th scope="col">DOB</th>
         <th scope="col">Subjcet</th>
         <th scope="col">hobby</th>
         <th scope="col">Action</th>
@@ -25,7 +26,8 @@
         <th th:text="${student.id}"></th>
         <td th:text="${student.name}"></td>
         <td th:text="${student.email}"></td>
-        <td th:text="${student.subject}"></td>
+        <td th:text="${student.dob}"></td>
+        <td th:text="${student.subId.subject}"></td>
         <td th:text="${student.hobby}"></td>
         <td>
             <a class="btn btn-danger" th:href="@{'/student/delete/'+${student.id}}">Delete</a>
