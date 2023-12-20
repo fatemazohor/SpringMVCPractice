@@ -14,7 +14,7 @@ import java.util.List;
 public class CategoriesController {
     @Autowired
     private CategoriesService service;
-    @GetMapping("/")
+    @GetMapping("")
     public String getAllCat(Model m){
         List<Categories> categoriesList = service.getAllCategories();
         m.addAttribute("cateList",categoriesList);
@@ -22,27 +22,28 @@ public class CategoriesController {
         return "Categories";
     }
 
-    @PostMapping("/add")
+    @GetMapping("/add")
     public String addCat(Model m){
         m.addAttribute("category", new Categories());
         m.addAttribute("title","Categories_Form");
         return "FormCategories";
     }
 
-    @GetMapping("/save")
+    @PostMapping("/save")
     public String saveCat(@ModelAttribute Categories categories){
         service.saveCat(categories);
-        return "/";
+        return "redirect:/category";
     }
 
-    @GetMapping("/delete/id")
+    @GetMapping("/delete/{id}")
     public String deleteCat(@PathVariable int id){
         service.deleteCat(id);
-        return "redirect: /";
+        return "redirect:/category/";
     }
-
-    public String updateCat(@PathVariable int id){
-        service.findCategories(id);
+    @GetMapping("/update/{id}")
+    public String updateCat(@PathVariable int id,Model m){
+        Categories cat=service.findCategories(id);
+        m.addAttribute("category", cat);
         return "FormCategories";
     }
 
