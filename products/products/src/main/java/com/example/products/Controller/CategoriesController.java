@@ -38,8 +38,9 @@ public class CategoriesController {
     @GetMapping("/delete/{id}")
     public String deleteCat(@PathVariable int id){
         service.deleteCat(id);
-        return "redirect:/category/";
+        return "redirect:/category";
     }
+
     @GetMapping("/update/{id}")
     public String updateCat(@PathVariable int id,Model m){
         Categories cat=service.findCategories(id);

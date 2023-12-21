@@ -7,17 +7,43 @@
 <!--<body>-->
 <div th:insert="header.html"></div>
 <div class="container">
-    <h2 class="py-3" >Product Form</h2>
-    <h2 class="py-3" th:if="${id!=null}">Product update Form</h2>
-<form method="post" th:action="@{/product/add}" th:object="${product}">
-    <div class="mb-3">
-        <label class="form-label" for="name" id="name">Product</label>
-<!--        <input type="text" class="form-input" placeholder="Name" th:field="*{name}">-->
+    <div class="container">
+        <h3>Product List</h3>
+        <a  class="btn btn-danger" th:href="@{'/product/add'}">Add New</a>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+
+            </thead>
+            <tbody>
+            <tr th:each="product:${productList}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.category.category}"></td>
+                <td th:text="${product.price}"></td>
+
+                <td>
+                    <a  class="btn btn-warning" th:href="@{'/product/update/'+${product.id}}">Update</a>
+                    <!--                <button type="submit" class="btn btn-warning" th:href="@{'/category/update/'+${cate.id}}">Update</button>-->
+                    <a  class="btn btn-danger" th:href="@{'/product/delete/'+${product.id}}">Delete</a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
     </div>
-</form>
 
 </div>
-<div th:insert="footer.html.html"></div>
+
+</div>
+<div th:insert="footer.html"></div>
 
 <!--</body>-->
 <!--</html>-->

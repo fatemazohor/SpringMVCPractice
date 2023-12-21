@@ -26,6 +26,7 @@ public class ProductController {
         m.addAttribute("title", "productsList");
         return "Product";
     }
+
     @GetMapping("/add")
     public String addPro(Model m){
         List<Categories> categoriesList=catservice.getAllCategories();
@@ -44,11 +45,13 @@ public class ProductController {
         return "redirect:/product";
 
     }
+    @GetMapping("/delete/{id}")
     public String deleteProduct(@PathVariable int id){
         service.deleteProducts(id);
         return "redirect:/product";
     }
 
+    @GetMapping("/update/{id}")
     public String updateProduct(@PathVariable int id,Model m){
         Products product = service.findProduct(id);
         m.addAttribute("product",product);

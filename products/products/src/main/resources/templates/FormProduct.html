@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title th:text="${title}">Form Categories</title>
 </head>
 <body>
+<!--<div th:insert="header.html"></div>-->
+<h2 class="py-3" th:if="${id==null}">Product Form</h2>
+<h2 class="py-3" th:if="${id!=null}">Product update Form</h2>
+<div class="container">
+<form method="post" th:action="@{'/product/save'}" th:object="${product}">
+    <input type="hidden" class="form-input"  th:field="*{id}">
+    <div class="mb-3">
+        <label class="form-label" for="name" id="name">Product</label>
+        <input type="text" class="form-control" placeholder="Name" th:field="*{name}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="category" id="category">Category</label>
 
+    <select name="category" class="form-control" th:field="*{category}">
+        <option th:if="${id == null}" th:each="cat:${categoryList}" th:text="${cat.category}" th:value="${cat.id}">Select one</option>
+        <option th:if="${id != null}" th:each="cat:${categoryList}" th:text="${cat.category}" th:value="${cat.id}">Select one</option>
+    </select>
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="price" id="price">price</label>
+        <input type="text" class="form-control" placeholder="Price" th:field="*{price}">
+    </div>
+    <div class="mb-3">
+        <button class="btn btn-primary" type="submit" th:if="*{id == null}">Submit</button>
+        <button class="btn btn-primary" type="submit" th:if="*{id != null}">Update</button>
+        <button class="btn btn-warning" type="reset">Reset</button>
+    </div>
+</form>
+</div>
+<!--<div th:insert="footer.html"></div>-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
