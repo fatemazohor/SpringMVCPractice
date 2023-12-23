@@ -12,7 +12,7 @@ public class EmployeeService {
     @Autowired
     private Iemployee repo;
 
-    public void saveEmp(Employees employees){
+    public  void saveEmp(Employees employees){
         repo.save(employees);
     }
 
