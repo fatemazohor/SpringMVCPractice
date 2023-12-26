@@ -30,40 +30,36 @@ public class StudentDao {
 
     public int saveStudent(Student s) {
 
-        String sql = "insert into old_student values('" + s.getsName() + "," + s.getEmail() + ""
-                + " ," + s.getPassword() + ", " + s.getGender() + "," + s.getAddress() + "," + s.getCity() + "," + s.getZip() + " ')";
+        String sql = "insert into student(sName, email, password, gender) values('" + s.getsName() + ", " + s.getEmail() + ", "
+                + s.getPassword() + ", " + s.getGender() +  " ')";
         return template.update(sql);
     }
 
     public int upadateStudent(Student s) {
-        String sql = " update old_student set sname =" + s.getsName() + ",email = " + s.getEmail() + ",password= " + s.getPassword() + " ,gender = " + s.getGender() + ",address= " + s.getAddress() + ",state = " + s.getState() + ",city=" + s.getCity() + ",zip=" + s.getZip() + " where idstudent = " + s.getIdstudent() + "  ";
+        String sql = " update student set sname =" + s.getsName() + ",email = " + s.getEmail() + ",password= " + s.getPassword() + " ,gender = " + s.getGender()+"  ";
         return template.update(sql);
     }
 
     public int deleteStudent(int id) {
 
-        String sql = "delete from old_student where idstudent=" + id + " ";
+        String sql = "delete from student where idstudent=" + id + " ";
         return template.update(sql);
     }
 
     public Student getStuById(int id) {
-        String sql = "select * from old_student where id=?";
+        String sql = "select * from student where idstudent=?";
         return template.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<Student>(Student.class));
     }
 
     public List<Student> getStudent() {
-        return template.query("select * from old_student", new RowMapper<Student>() {
+        return template.query("select * from student", new RowMapper<Student>() {
             public Student mapRow(ResultSet rs, int row) throws SQLException {
                 Student e = new Student();
-                e.setIdstudent(rs.getInt(1));
-                e.setsName(rs.getString(2));
-                e.setEmail(rs.getString(3));
-                e.setPassword(rs.getString(4));
-                e.setGender(rs.getString(5));
-                e.setAddress(rs.getString(6));
-                e.setCity(rs.getString(7));
-                e.setState(rs.getString(8));
-                e.setZip(rs.getString(9));
+                e.setIdstudent(rs.getInt("idstudent"));
+                e.setsName(rs.getString("sName"));
+                e.setEmail(rs.getString("email"));
+                e.setPassword(rs.getString("password"));
+                e.setGender(rs.getString("gender"));
                 return e;
             }
         });

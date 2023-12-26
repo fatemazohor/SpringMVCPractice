@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,9 +24,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class StudentController {
 
     @Autowired
-    StudentDao dao;
+    private StudentDao dao;
 
-    @RequestMapping("/studentform")
+    @GetMapping("/studentform")
     public String studentForm(Model m) {
         m.addAttribute("student", new Student());
         return "studentform";
@@ -40,6 +41,7 @@ public class StudentController {
     @RequestMapping("/viewstudent")
     public String viewStudent(Model m) {
         List<Student> stuList = dao.getStudent();
+        m.addAttribute("stulist", stuList);
         return "viewstudent";
     }
 
