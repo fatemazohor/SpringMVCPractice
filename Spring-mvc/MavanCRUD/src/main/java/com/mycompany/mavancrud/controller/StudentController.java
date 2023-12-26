@@ -28,7 +28,7 @@ public class StudentController {
     @RequestMapping("/studentform")
     public String studentForm(Model m) {
         m.addAttribute("student", new Student());
-        return "StudentForm";
+        return "studentform";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
